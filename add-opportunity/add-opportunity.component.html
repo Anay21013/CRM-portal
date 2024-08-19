@@ -1,0 +1,39 @@
+<div class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Opportunity</h4>
+        <button type="button" class="close" (click)="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name"><span>Opportunity Name</span></label>
+            <input type="text" class="form-control" id="opportunityName" name="opportunityName" [(ngModel)]="opportunity.name" required>
+          </div>
+          <div class="form-group">
+            <label for="owner"><span>Owner</span></label>
+            <input type="text" class="form-control" id="owner" name="owner" [(ngModel)]="opportunity.owner" required>
+          </div>
+          <div class="form-group">
+            <label for="type"><span>Type</span></label>
+            <input type="text" class="form-control" id="type" name="type" [(ngModel)]="opportunity.type" required>
+          </div>
+          <div class="form-group">
+            <label for="won"><span>Won</span></label>
+            <input type="text" class="form-control" id="won" name="won" [(ngModel)]="opportunity.won" required>
+          </div>
+          <div class="form-group">
+            <label for="lost"><span>Lost</span></label>
+            <input type="text" class="form-control" id="won" name="won" [(ngModel)]="opportunity.lost" required>
+          </div>
+          <!-- <div class="form-group">
+            <label for="date"><span>Received Date</span></label>
+            <input type="text" class="form-control" id="date" name="date" [(ngModel)]="opportunity.receievedDate" required>
+          </div> -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <!-- <router-outlet></router-outlet> -->
+      </div>
+    </div>
+  </div>
+<!-- <router-outlet></router-outlet> -->

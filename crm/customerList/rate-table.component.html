@@ -1,0 +1,14 @@
+<div class="col-12 my-3" *checkPermission="['employeeInbox','approverInbox','adminInbox','getMasterCustomer']">
+    <vhub-table *ngIf="columnDefs" [rowData]="rowData" [columnDefs]="columnDefs" nowRowsMessage="No  Rate Charts"
+        [showRowActions]="true" tableName="Effort Based Billing Chart" [enableFilter]="true" [showRefresh]="false" [showTableName]="true"
+        [showColumnFilter]="true" (resetClicked)="initTable()" >
+        <button mat-button type="button" color="primary" (click)="openAddRateChartModal()" class="fw-bold fs-18 small">
+            <mat-icon color="primary" class="material-icons">
+                add_circle_outline
+            </mat-icon>
+            
+        </button>
+    </vhub-table>
+</div>
+<router-outlet></router-outlet>
+  

@@ -1,0 +1,91 @@
+<div class="col-12 my-3">
+    <!-- <div class="button-container">
+        <button (click)="openEditContractModal()">Edit</button>
+    </div> -->
+    <mat-tab-group>
+        <ng-container>    
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon color="primary" class="me-2">person</mat-icon>
+                    <span>Contract Details</span>
+                </ng-template>
+                <ng-template matTabContent>
+                    <ng-container *ngIf="contractDetails">
+                        <ng-container>
+                            <div class="button-div">
+                                <div>
+                                    <h6 class="mat-text-primary mt-2 ps-2">Contract Information</h6>
+                                </div>
+                                <div>
+                                    <button class="fw-bold fs-18 small" type="button" color="primary" (click)="openEditContractModal()" mat-button>
+                                        <mat-icon color="primary">
+                                            edit
+                                        </mat-icon>
+                                    </button>
+                                </div> 
+                            </div>
+                            <div class="row m-0 mt-2">
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Name" [isViewOnly]="true"
+                                        [modelValue]="contractDetails?.name"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Owner" [isViewOnly]="true"
+                                        [modelValue]="contractDetails?.owner"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Type" [isViewOnly]="true"
+                                        [modelValue]="contractDetails?.type"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Created On" [isViewOnly]="true"
+                                        [modelValue]="contractDetails?.createdDatetime"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="End Date" [isViewOnly]="true"
+                                        [modelValue]="contractDetails?.endDate"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Last Modified" [isViewOnly]="true"
+                                        [modelValue]="contractDetails?.lastModifiedBy"></vhub-text>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </ng-template>
+            </mat-tab>
+        </ng-container>
+    </mat-tab-group>
+</div>
+
+
+
+<div class="modal" *ngIf="showEditContractModal">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Contract</h4>
+          <button type="button" class="close" (click)="closeEditContractModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form #f="ngForm" (ngSubmit)="updateContract()">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="contractDetails.name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Owner</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="contractDetails.owner" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Type</label>
+              <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="contractDetails.type" required>
+            </div>
+            <div class="form-group">
+              <label for="createdby">End Date</label>
+              <input type="text" class="form-control" id="createdby" name="createdby" [(ngModel)]="contractDetails.endDate" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+</div>

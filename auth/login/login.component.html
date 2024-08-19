@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="form.value.password && form.value.username && onSubmit()">
+	<div class="col-12 d-flex flex-column justify-content-center align-items-center">
+		<div class="auth-header-title">
+			<p class="text-start m-0" style="font-family: 'Times New Roman', Times, serif;">Sign in to vConnect</p>
+		</div>
+		<!--<p class="text-center">Please enter your username and password to log in.</p>-->
+
+		<vhub-text class="col-10" label="Work email" type="text" [group]="form" name="username"
+			placeholder="Enter Your Work email"></vhub-text>
+		<vhub-text class="col-10" label="Password" type="password" [autocomplete]="false"
+			placeholder="Enter Your Password" [group]="form" name="password" [eyeButton]="true" [disableCut]="true"
+			[disableCopy]="true" [disablePaste]="false"></vhub-text>
+		<button type="submit" mat-raised-button color="primary" class="col-4 mt-2 mb-1"
+			[disabled]="!form.value.password || !form.value.username">
+			Log In
+		</button>
+		<label for="">Forgot your password? <a href="/#/app/auth/forgot-password">Click here</a></label>
+	</div>
+
+	<!-- <mat-error *ngIf="error">{{ error }}</mat-error> -->
+</form>

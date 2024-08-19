@@ -1,0 +1,102 @@
+<div class="col-12 my-3">
+    <!-- <div class="button-container">
+        <button (click)="openEditContractModal()">Edit</button>
+    </div> -->
+    <mat-tab-group>
+        <ng-container>    
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon color="primary" class="me-2">person</mat-icon>
+                    <span>Opportunity Details</span>
+                </ng-template>
+                <ng-template matTabContent>
+                    <ng-container *ngIf="opportunityDetails">
+                        <ng-container>
+                            <div class="button-div">
+                                <div>
+                                    <h6 class="mat-text-primary mt-2 ps-2">Opportunity Information</h6>
+                                </div>
+                                <div>
+                                    <button class="fw-bold fs-18 small" type="button" color="primary" (click)="openEditOpportunityModal()" mat-button>
+                                        <mat-icon color="primary">
+                                            edit
+                                        </mat-icon>
+                                    </button>
+                                </div> 
+                            </div>
+                            <div class="row m-0 mt-2">
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Name" [isViewOnly]="true"
+                                        [modelValue]="opportunityDetails?.name"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Owner" [isViewOnly]="true"
+                                        [modelValue]="opportunityDetails?.owner"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Type" [isViewOnly]="true"
+                                        [modelValue]="opportunityDetails?.type"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Created On" [isViewOnly]="true"
+                                        [modelValue]="opportunityDetails?.createdDatetime"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="End Date" [isViewOnly]="true"
+                                        [modelValue]="opportunityDetails?.endDate"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Received Date" [isViewOnly]="true"
+                                        [modelValue]="opportunityDetails?.receivedDate"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Last Modified" [isViewOnly]="true"
+                                        [modelValue]="opportunityDetails?.lastModifiedBy"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Created by" [isViewOnly]="true"
+                                        [modelValue]="opportunityDetails?.createdby"></vhub-text>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </ng-template>
+            </mat-tab>
+        </ng-container>
+    </mat-tab-group>
+</div>
+
+
+<div class="modal" *ngIf="showEditOpportunityModal">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Opportunity</h4>
+          <button type="button" class="close" (click)="closeEditOpportunityModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form #f="ngForm" (ngSubmit)="updateOpportunity()">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="opportunityDetails.name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Owner</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="opportunityDetails.owner" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Type</label>
+              <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="opportunityDetails.type" required>
+            </div>
+            <div class="form-group">
+              <label for="createdby">End Date</label>
+              <input type="text" class="form-control" id="createdby" name="createdby" [(ngModel)]="opportunityDetails.endDate" required>
+            </div>
+            <div class="form-group">
+                <label for="createdby">Received Date</label>
+                <input type="text" class="form-control" id="createdby" name="createdby" [(ngModel)]="opportunityDetails.receivedDate" required>
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+</div>

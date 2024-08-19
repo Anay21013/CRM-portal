@@ -1,0 +1,150 @@
+<div class="col-12 my-3">
+    <mat-tab-group>
+        <ng-container>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon color="primary" class="me-2">person</mat-icon>
+                    <span>Master Customer Details</span>
+                </ng-template>
+                <ng-template matTabContent>
+                    <ng-container *ngIf="masterCustomerDetails">
+                        <ng-container>
+                            <div class="button-div">
+                                <div>
+                                    <h6 class="mat-text-primary mt-2 ps-2">Master Customer Information</h6>
+                                </div>
+                                <div>
+                                    <button class="fw-bold fs-18 small" type="button" color="primary" (click)="openEditMasterCustomerModal()" mat-button>
+                                        <mat-icon color="primary">
+                                            edit
+                                        </mat-icon>
+                                    </button>
+                                </div>  
+                            </div>
+                            <div class="row m-0 mt-2">
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Name" [isViewOnly]="true"
+                                        [modelValue]="masterCustomerDetails?.name"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Phone no" [isViewOnly]="true"
+                                        [modelValue]="masterCustomerDetails?.phone"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Email" [isViewOnly]="true"
+                                        [modelValue]="masterCustomerDetails?.email"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Address" [isViewOnly]="true"
+                                        [modelValue]="masterCustomerDetails?.addressLine1+','+masterCustomerDetails?.addressLine2+','+masterCustomerDetails?.city+','+masterCustomerDetails?.state+','+masterCustomerDetails?.country"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="ZIP" [isViewOnly]="true"
+                                        [modelValue]="masterCustomerDetails?.zip"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Created On" [isViewOnly]="true"
+                                        [modelValue]="masterCustomerDetails?.createdDatetime"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Payment Terms" [isViewOnly]="true"
+                                        [modelValue]="getPaymentTermsLabel(masterCustomerDetails?.paymentTerms)"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="End Date" [isViewOnly]="true"
+                                        [modelValue]="masterCustomerDetails?.endDate"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Last Modified" [isViewOnly]="true"
+                                        [modelValue]="masterCustomerDetails?.lastModifiedBy"></vhub-text>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <vhub-text label="Last Modified" [isViewOnly]="true"
+                                        [modelValue]="masterCustomerDetails?.lastModifiedDatetime"></vhub-text>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </ng-template>
+            </mat-tab>
+        </ng-container>
+    </mat-tab-group>
+</div>
+
+  <app-add-customer *ngIf="showAddCustomerModal" (close)="closeAddCustomerModal()"></app-add-customer>
+<div>
+    <div class="contract-container">
+        <customer-table-component  (addCustomer)="openAddCustomerModal()">
+            [data]="masterCustomers" 
+            [columns]="masterCustomerTableConfig"
+            
+        </customer-table-component>
+    </div>
+</div>
+  <app-add-rate-chart *ngIf="showAddRateChartModal" (close)="closeAddRateChartModal()"></app-add-rate-chart>
+<div>
+    <div class="opportunity-container">
+        <rate-table-component (addRate)="openAddRateChartModal()">
+            [data]="masterCustomers" 
+            [columns]="masterCustomerTableConfig"
+        </rate-table-component>
+    </div>
+</div>
+<!-- <pre>{{ masterCustomerDetails | json }}</pre>
+<pre>{{ customerDetails | json }}</pre>
+<pre>{{ rates | json }}</pre> -->
+
+<!-- Add a modal for editing the customer details -->
+<div class="modal" *ngIf="showEditMasterCustomerModal">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Master Customer</h4>
+          <button type="button" class="close" (click)="closeEditMasterCustomerModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form #f="ngForm" (ngSubmit)="updateMasterCustomer()">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="masterCustomerDetails.name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="masterCustomerDetails.email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="masterCustomerDetails.phone" required>
+            </div>
+            <div class="form-group">
+              <label for="addressLine1">Address Line 1</label>
+              <input type="text" class="form-control" id="addressLine1" name="addressLine1" [(ngModel)]="masterCustomerDetails.addressLine1" required>
+            </div>
+            <div class="form-group">
+              <label for="addressLine2">Address Line 2</label>
+              <input type="text" class="form-control" id="addressLine2" name="addressLine2" [(ngModel)]="masterCustomerDetails.addressLine2">
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city" name="city" [(ngModel)]="masterCustomerDetails.city" required>
+            </div>
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" class="form-control" id="state" name="state" [(ngModel)]="masterCustomerDetails.state" required>
+            </div>
+            <div class="form-group">
+              <label for="zip">ZIP</label>
+              <input type="text" class="form-control" id="zip" name="zip" [(ngModel)]="masterCustomerDetails.zip" required>
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input type="text" class="form-control" id="country" name="country" [(ngModel)]="masterCustomerDetails.country" required>
+            </div>
+            <div class="form-group">
+              <label for="createdby">End Date</label>
+              <input type="text" class="form-control" id="createdby" name="createdby" [(ngModel)]="masterCustomerDetails.endDate" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+</div>

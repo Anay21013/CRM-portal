@@ -1,0 +1,21 @@
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px; /* Adjust as needed */
+  }
+  
+  .button-container button {
+    font-size: 0.875em; /* Smaller font size */
+    padding: 5px 10px;  /* Smaller padding */
+    background-color: #0056b3; /* Adjust to match your theme */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button-container button:hover {
+    background-color: #0056b3; /* Adjust hover color */
+  }
+  

@@ -1,0 +1,43 @@
+<div class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Role</h4>
+        <button type="button" class="close" (click)="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="onSubmit()">
+            <!-- <div class="form-group">
+                <label for="id"><span>ID</span> </label>
+                <input type="text" class="form-control" id="id" name="id" [(ngModel)]="rate.id" required>
+              </div> -->
+          <!-- <div class="form-group">
+            <label for="name"><span>Org ID</span></label>
+            <input type="text" class="form-control" id="orgId" name="orgId" [(ngModel)]="rate.orgId" required>
+          </div> -->
+          <div class="form-group">
+            <label for="phone"><span>Role Name</span></label>
+            <input type="text" class="form-control" id="roleName" name="roleName" [(ngModel)]="rate.roleName" required>
+          </div>
+          <div class="form-group">
+            <label for="email"><span>Role Rate</span></label>
+            <input type="email" class="form-control" id="roleRate" name="roleRate" [(ngModel)]="rate.roleRate" required>
+          </div>
+          <div class="form-group">
+            <label for="addressLine1"><span>Currency Code</span></label>
+            <input type="text" class="form-control" id="currencyCode" name="currencyCode" [(ngModel)]="rate.currencyCode" required>
+          </div>
+          <div class="form-group">
+            <label for="addressLine2"><span>Role Rate Frequency</span></label>
+            <input type="text" class="form-control" id="roleRateFrequency" name="roleRateFrequency" [(ngModel)]="rate.roleRateFrequency" required>
+          </div>
+          <!-- <div class="form-group">
+            <label for="country"><span>Created By</span></label>
+            <input type="text" class="form-control" id="createdBy" name="createdBy" [(ngModel)]="rate.createdBy" required>
+          </div> -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <!-- <router-outlet></router-outlet> -->
+      </div>
+    </div>
+  </div>
+<!-- <router-outlet></router-outlet> -->

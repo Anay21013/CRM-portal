@@ -1,0 +1,70 @@
+<div class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Master Customer</h4>
+        <button type="button" class="close" (click)="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="onSubmit()">
+            <!-- <div class="form-group">
+                <label for="id"><span>Master Customer ID</span> </label>
+                <input type="text" class="form-control" id="id" name="id" [(ngModel)]="customer.id" required>
+              </div> -->
+          <div class="form-group">
+            <label for="name"><span>Name</span></label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="customer.name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone"><span>Phone</span></label>
+            <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="customer.phone" required>
+          </div>
+          <div class="form-group">
+            <label for="email"><span>Email</span></label>
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="customer.email" required>
+          </div>
+          <div class="form-group">
+            <label for="addressLine1"><span>Address Line 1</span></label>
+            <input type="text" class="form-control" id="addressLine1" name="addressLine1" [(ngModel)]="customer.addressLine1" required>
+          </div>
+          <div class="form-group">
+            <label for="addressLine2"><span>Address Line 2</span></label>
+            <input type="text" class="form-control" id="addressLine2" name="addressLine2" [(ngModel)]="customer.addressLine2" required>
+          </div>
+          <div class="form-group">
+            <label for="city"><span>City</span></label>
+            <input type="text" class="form-control" id="city" name="city" [(ngModel)]="customer.city" required>
+          </div>
+          <div class="form-group">
+            <label for="state"><span>State</span></label>
+            <input type="text" class="form-control" id="state" name="state" [(ngModel)]="customer.state" required>
+          </div>
+          <div class="form-group">
+            <label for="zip"><span>ZIP</span></label>
+            <input type="text" class="form-control" id="zip" name="zip" [(ngModel)]="customer.zip" required>
+          </div>
+          <div class="form-group">
+            <label for="country"><span>Country</span></label>
+            <input type="text" class="form-control" id="country" name="country" [(ngModel)]="customer.country" required>
+          </div>
+          <!-- <div class="form-group">
+            <label for="country"><span>Created By</span></label>
+            <input type="text" class="form-control" id="createdby" name="createdby" [(ngModel)]="customer.createdBy" required>
+          </div> -->
+          <div class="form-group">
+            <label for="paymentTerms"><span>Payment Terms</span></label>
+            <select class="form-control" id="paymentTerms" name="paymentTerms" [(ngModel)]="customer.paymentTerms" required>
+              <option [value]="1">7 Days</option>
+              <option [value]="2">15 Days</option>
+              <option [value]="3">30 Days</option>
+              <option [value]="4">45 Days</option>
+              <option [value]="5">60 Days</option>
+              <option [value]="6">90 Days</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <!-- <router-outlet></router-outlet> -->
+      </div>
+    </div>
+  </div>
+<!-- <router-outlet></router-outlet> -->

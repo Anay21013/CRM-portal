@@ -1,0 +1,6 @@
+   <div class="master-container" >
+    <master-table-component (addMaster)="openAddCustomerModal()"></master-table-component>
+  </div>
+  
+  <app-add-master-customer *ngIf="showAddCustomerModal" (close)="closeAddCustomerModal()"></app-add-master-customer>
+  

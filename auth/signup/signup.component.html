@@ -1,0 +1,14 @@
+<div class="col-12" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="auth-header-title">Signup</div>
+    <vhub-text label="Username" type="text" [alphaNumericOnly]="true" [group]="form" name="email"
+        [autocomplete]="false" placeholder="Enter Your Email" class="col-10"></vhub-text>
+    <vhub-text label="Password" type="text" [autocomplete]="false" placeholder="Enter Your Password" [group]="form"
+        name="password" class="col-10" [disableCut]="true" [disableCopy]="true"
+        [disablePaste]="true"></vhub-text>
+    <vhub-text label="Confirm Password" type="text" [autocomplete]="false" placeholder="Enter Your Password"
+        [group]="form" name="confirmPassword" class="col-10" [disableCut]="true" [disableCopy]="true"
+        [disablePaste]="true"></vhub-text>
+    <button type="submit" (click)="onSubmit()" mat-raised-button color="primary" class="col-10 mt-2 mb-1"
+        [disabled]="form.invalid">SignUp</button>
+    <label>Already have account, want to <a routerLink="/app/auth/login">Login</a>?</label>
+</div>
